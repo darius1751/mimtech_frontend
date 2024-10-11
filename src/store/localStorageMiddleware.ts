@@ -13,7 +13,6 @@ export const localStorageMiddleware = (): any => {
             localStorage.setItem("history", JSON.stringify(history));
             action.payload = history;
         }
-
         return next(action);
     }
 }

@@ -17,12 +17,16 @@ export const Content = ({ dictionaries }: ContentProps) => {
     
     return (
         <div className="mt-10">
-            <TitleWord dictionaries={dictionaries} />
+            {
+                dictionaries.length > 0 ? <TitleWord dictionaries={dictionaries} /> : (
+                    <h2 className="text-4xl text-red-500 text-center">
+                        Esta busqueda no es valida, por favor ingresar una palabra en Ingles.
+                    </h2>
+                )
+            }
             {
                 infoPartOfSpeech.map((meaning, index) => (<SectionInfo key={`${index}-meaning-${meaning.partOfSpeech}`} meaning={meaning} />))
             }
-            {/*  */}
-
         </div>
     )
 }

@@ -20,7 +20,7 @@ export default function GeneralLayout({
         dispatch(toogleTheme({ theme: "light" }));
       }
     }
-  });
+  }, []);
   return (
     <body className={`${theme}-mode bg-background text-foreground`}>
       {children}

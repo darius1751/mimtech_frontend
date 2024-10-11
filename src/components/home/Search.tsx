@@ -18,8 +18,11 @@ export const Search = ({ search, setSearch, setDictionaries }: SearchProps) => {
         e.preventDefault();
         if (/^[A-Za-z]{1,}$/.test(search.trim())) {
             const response = (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search.trim()}`, { next: { revalidate: 60 } }));
-            const dictionaries: Dictionary[] = await response.json();
-            setDictionaries(dictionaries);
+            const dictionaries = await response.json();
+            if (dictionaries.message) {
+                setDictionaries([]);
+            } else
+                setDictionaries(dictionaries);
             dispatch(addInHistory([{ word: search, date: new Date().toJSON() }]));
         } else {
             console.log("Error");
