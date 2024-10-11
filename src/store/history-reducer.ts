@@ -3,11 +3,12 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
 // Define a type for the slice state
+export interface History {
+    word: string;
+    date: string;
+}
 export interface HistoryState {
-    history: {
-        word: string;
-        date: string;
-    }[],
+    history: History[],
 }
 
 // Define the initial state using that type
@@ -20,13 +21,12 @@ export const historySlice = createSlice({
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
-        getHistory: (state, action: PayloadAction<any | undefined>) => {
-            state.history = action.payload;
+        getHistory: (state, action: PayloadAction<History[] | undefined>) => {
+            state.history = action.payload ?? [];
         },
-        addInHistory: (state, action: PayloadAction<any>) => {
+        addInHistory: (state, action: PayloadAction<History[]>) => {
             state.history = action.payload;
         }
-
     },
 })
 

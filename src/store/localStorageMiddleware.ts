@@ -1,8 +1,7 @@
-import { Dispatch, MiddlewareAPI, PayloadAction } from "@reduxjs/toolkit"
+import { Dispatch, PayloadAction } from "@reduxjs/toolkit"
 
-
-export const localStorageMiddleware = (state: MiddlewareAPI): any => {
-    return (next: Dispatch) => (action: PayloadAction<any>) => {
+export const localStorageMiddleware = (): any => {
+    return (next: Dispatch) => (action: PayloadAction<History[] | any | undefined>) => {
         const { payload, type } = action;
 
         if (type.includes("getHistory")) {
@@ -10,7 +9,7 @@ export const localStorageMiddleware = (state: MiddlewareAPI): any => {
         }
         if (type.includes("addInHistory")) {
             const history = JSON.parse(localStorage.getItem("history") || "[]")
-            history.push(payload);
+            history.push(payload![0]);
             localStorage.setItem("history", JSON.stringify(history));
             action.payload = history;
         }

@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react"
 import { SearchIcon } from "../icons/SearchIcon";
-import { Dictionary } from "@/models/Dictionary";
+import { Dictionary } from "@/models/Dictionary.model";
 import { useAppDispatch } from "@/store/hooks";
 import { addInHistory } from "@/store/history-reducer";
 
@@ -20,7 +20,7 @@ export const Search = ({ search, setSearch, setDictionaries }: SearchProps) => {
             const response = (await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${search.trim()}`, { next: { revalidate: 60 } }));
             const dictionaries: Dictionary[] = await response.json();
             setDictionaries(dictionaries);
-            dispatch(addInHistory({ word: search, date: new Date().toJSON() }));
+            dispatch(addInHistory([{ word: search, date: new Date().toJSON() }]));
         } else {
             console.log("Error");
         }

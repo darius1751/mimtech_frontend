@@ -12,6 +12,7 @@ export const globalStore = configureStore({
         historyReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware),
+    
 })
 
 export type RootState = ReturnType<typeof globalStore.getState>

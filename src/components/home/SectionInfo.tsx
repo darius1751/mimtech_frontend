@@ -1,4 +1,4 @@
-import { Meaning } from "@/models/Dictionary"
+import { Meaning } from "@/models/"
 
 type SectionInfoProps = {
     meaning: Meaning

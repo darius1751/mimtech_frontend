@@ -11,7 +11,7 @@ export const ToogleTheme = () => {
     const theme = useAppSelector(({ themeReducer }) => themeReducer.theme);
     const dispatch = useDispatch();
     const toogleThemeForm = (e: ChangeEvent<HTMLInputElement>) => {
-        let { value } = e.target;
+        const { value } = e.target;
         const newTheme = value as "dark" | "light";
         dispatch(toogleTheme({ theme: newTheme }))
     }

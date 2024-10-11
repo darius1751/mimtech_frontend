@@ -1,5 +1,5 @@
 'use client'
-import { Dictionary } from "@/models/Dictionary";
+import { Dictionary } from "@/models/Dictionary.model";
 import { Search } from "./Search"
 import {  useState } from "react";
 import { useAppSelector } from "@/store/hooks";

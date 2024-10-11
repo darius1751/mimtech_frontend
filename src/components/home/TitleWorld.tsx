@@ -1,4 +1,4 @@
-import { Dictionary, Phonetic } from "@/models/Dictionary";
+import { Dictionary, Phonetic } from "@/models/";
 import { PlayIcon } from "../icons/PlayIcon";
 type TitleWordProps = {
     dictionaries: Dictionary[];

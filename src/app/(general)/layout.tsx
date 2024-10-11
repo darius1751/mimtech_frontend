@@ -12,7 +12,7 @@ export default function GeneralLayout({
   const theme = useAppSelector(({ themeReducer }) => themeReducer.theme);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getHistory(""));
+    dispatch(getHistory());
     if (typeof window !== "undefined") {
       const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
@@ -20,7 +20,7 @@ export default function GeneralLayout({
         dispatch(toogleTheme({ theme: "light" }));
       }
     }
-  }, []);
+  });
   return (
     <body className={`${theme}-mode bg-background text-foreground`}>
       {children}
